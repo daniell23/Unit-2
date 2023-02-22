@@ -1,5 +1,5 @@
-//https://github.com/uwcartlab/webmapping
-
+/* Map of GeoJSON data from MegaCities.geojson */
+//declare map var in global scope
 var map;
 //function to instantiate the Leaflet map
 function createMap(){
@@ -56,7 +56,7 @@ function onEach(response){
 function getData(){
     var mydata
     //load the data
-    fetch("data/TravelCountry.geojson")
+    fetch("data/MegaCities.geojson")
         .then(function(response){
             return response.json();
         })
