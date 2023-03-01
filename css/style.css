@@ -2,4 +2,37 @@
     height: 600px;
     font-weight: 100;
     width: 1300px;
+}.leaflet-popup-content p {
+    margin: 0.2em 0;
+    
+    
+};
+#panel {    
+    width: 16%;    
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    line-height: 42px;
 }
+.range-slider {  
+    width: 30%;  
+}  
+
+.step {  
+    width: 6%;  
+}  
+
+.step img {  
+    width: 40%;  
+}  
+
+#reverse {  
+    float: left;  
+    width: 7%
+    
+}
+#forward {
+    float: middle;
+    width:7%
+    }
