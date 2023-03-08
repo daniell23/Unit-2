@@ -1,13 +1,48 @@
 #myMap {
-    height: 600px;
+    height: 690px;
     font-weight: 100;
-    width: 1300px;
+    width: 1520px;
 }.leaflet-popup-content p {
     margin: 0.2em 0;
     
     
-};
-#panel {    
+}
+.legend-control-container {
+    width: 210px;
+    height: 120px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 15px;  
+    line-height: 0.01px;  
+    text-align: center;  
+    border: solid gray 1px;
+}.temporalLegend{
+    font-size: 20px;
+}
+
+
+.sequence-control-container {  
+    width: 350px;  
+    height: 35px;  
+    background-color: rgba(255,255,255,0.8);  
+    padding: 10px;  
+    line-height: 55px;  
+    text-align: center;  
+    border: solid gray 1px;  
+}  
+
+.range-slider {  
+    width: 250px;  
+}  
+
+.step {  
+    width: 40px;  
+}  
+
+.step img {  
+    width: 100%;  
+    height: auto;  
+} 
+/* #panel {    
     width: 16%;    
     padding: 20px;
     display: inline-block;
@@ -25,14 +60,12 @@
 
 .step img {  
     width: 40%;  
-}  
+}   */
 
 #reverse {  
     float: left;  
-    width: 7%
     
 }
 #forward {
     float: middle;
-    width:7%
     }
