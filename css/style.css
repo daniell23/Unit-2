@@ -1,10 +1,12 @@
 #myMap {
-    height: 690px;
+    border-style: inset; 
+    border-width: 5px; 
+    border-color: #7f8284; 
+    height: 510px;
     font-weight: 100;
-    width: 1520px;
+    width: 1515px;
 }.leaflet-popup-content p {
     margin: 0.2em 0;
-    
     
 }
 .legend-control-container {
@@ -15,6 +17,9 @@
     line-height: 0.01px;  
     text-align: center;  
     border: solid gray 1px;
+    border-style: inset; 
+    border-width: 3px; 
+    border-color: #7f8284; 
 }.temporalLegend{
     font-size: 20px;
 }
@@ -28,14 +33,21 @@
     line-height: 55px;  
     text-align: center;  
     border: solid gray 1px;  
+    border-style: inset; 
+    border-width: 3px; 
+    border-color: #7f8284; 
 }  
 
 .range-slider {  
     width: 250px;  
+    
 }  
 
 .step {  
-    width: 40px;  
+    width: 40px; 
+    border-style: inset; 
+    border-width: 3px; 
+    border-color: #7f8284; 
 }  
 
 .step img {  
@@ -63,9 +75,38 @@
 }   */
 
 #reverse {  
-    float: left;  
+    float: left;
     
 }
 #forward {
     float: middle;
     }
+
+#title{
+    width: 1510px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 1%;
+    text-align: center;
+    background-color: #636363;
+    color: #ff7800;
+    margin: 0 auto;
+    margin-bottom: 9px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgb(168, 168, 168);
+}
+
+#mapcontent{
+    border-style: inset; 
+    border-width: 3px; 
+    border-color: #7f8284; 
+    background-color: #636363;
+    padding: 10px; 
+    margin-top: 3px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-family: Helvetica, sans-serif;
+    color: #ff7800;
+}
+

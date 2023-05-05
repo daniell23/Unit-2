@@ -6,6 +6,8 @@ var attributes = [];
 var dataStats = {};  
 //function to instantiate the Leaflet map
 function createMap(){
+    // Calculating width and change zoom levels based on screen width
+    var width = window.innerWidth;
     //create the map
     map = L.map('myMap', {
         center: [50, 9],
@@ -19,6 +21,11 @@ function createMap(){
 
     //call getData function
     getData(map);
+
+    // calling HTML elements
+    document.getElementById('title').innerHTML =  'Travel Cost in the Europe (1995 - 2021)'; 
+    document.getElementById('mapcontent').innerHTML = "<p><font size = '+2'>W</font>elcome to my interactive map showcasing the total cost of traveling abroad from various European countries! The map allows you to explore the total travel costs for each country in Europe from 1995 to 2021, providing you with valuable insights into the trends and changes in travel costs over the years.<br><br>So go ahead, explore the map, and discover the total travel costs for your favorite European destinations!</p>";
+
 };
 
 //Step 1: Create new sequence controls
@@ -38,8 +45,8 @@ function createSequenceControls(){
 
             
             //add skip buttons
-            container.insertAdjacentHTML('beforeend', '<button class="step" id="reverse" title="Reverse"><img src="img/reverse.png"></button>'); 
-            container.insertAdjacentHTML('beforeend', '<button class="step" id="forward" title="Forward"><img src="img/forward.png"></button>');
+            container.insertAdjacentHTML('beforeend', '<button class="step" id="reverse" title="Reverse"><img src="img/1.png"></button>'); 
+            container.insertAdjacentHTML('beforeend', '<button class="step" id="forward" title="Forward"><img src="img/2.png"></button>');
 
              //disable any mouse event listeners for the container
              L.DomEvent.disableClickPropagation(container);
@@ -117,19 +124,20 @@ function createLegend(attributes){
 
             //Step 2: loop to add each circle and text to svg string
             for (var i=0; i<circles.length; i++){
-
-                //Step 3: assign the r and cy attributes  
+                //Step 3: assign the r and cy attributes 
+                
                 var radius = calcPropRadius(dataStats[circles[i]]);  
+                
                 var cy = 70 - radius; 
                 //circle string
-                //circle string            
-                svg += '<circle class="legend-circle" id="' + circles[i] + '" r="' + radius + '"cy="' + cy + '" fill="#F47821" fill-opacity="0.8" stroke="#000000" cx="53"/>';
+                //circle string
+                svg += '<circle class="legend-circle" id="' + circles[i] + '" r="' + radius + '"cy="' + cy + '" fill="#ff7800" fill-opacity="0.8" stroke="#000000" cx="53"/>';
 
                 //evenly space out labels            
-                var textY = i * 20 + 23;            
+                var textY = i * 23 + 23;            
 
                 //text string            
-                svg += '<text id="' + circles[i] + '-text" x="105" y="' + textY + '">' + Math.round(dataStats[circles[i]]*100)/100 + " million" + '</text>';
+                svg += '<text id="' + circles[i] + '-text" x="105" y="' + textY + '">' + Math.round(dataStats[circles[i]]*100/100) + " million" + '</text>';
             };
 
             //close svg string
@@ -162,7 +170,6 @@ function processData(data){
     };
     //check result
     //console.log(attributes);
-
     return attributes;
 };
 
@@ -172,13 +179,14 @@ function calcStats(data){
     //loop through each city
     for(var Country of data.features){
         //loop through each year
-        for(var year = 1995; year <= 2021; year+=5){
+        for(var year = 1995; year <= 2021; year+=1){
               //get population for current year
               var value = Country.properties[String(year)];
               //add value to array
               allValues.push(value);
         }
     }
+    console.log(allValues)
     //get min, max, mean stats for our array
     dataStats.min = Math.min(...allValues);
     dataStats.max = Math.max(...allValues);
@@ -192,7 +200,7 @@ function calcStats(data){
 function calcPropRadius(attValue) {
     
     //constant factor adjusts symbol sizes evenly
-    var minRadius = 0.5;
+    var minRadius = 0.45;
     //Flannery Apperance Compensation formula
     var radius = 1.0083 * Math.pow(attValue/dataStats.min,0.5715) * minRadius
 
@@ -275,11 +283,11 @@ function updatePropSymbols(attribute){
             document.querySelector(".year").innerHTML = attribute;
             //access feature properties
             var props = layer.feature.properties;
-
+            
             //update each feature's radius based on new attribute values
             var radius = calcPropRadius(props[attribute]);
             layer.setRadius(radius);
-
+            
             var popupContent = new PopupContent(props, attribute);
 
             //update popup content            
